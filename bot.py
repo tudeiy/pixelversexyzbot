@@ -225,7 +225,6 @@ class PixelTapTod:
                 secret = self.get_secret(userid)
                 new_data = Data(data, userid, username, secret)
                 self.get_me(new_data)
-                self.daily_combo(new_data)
                 self.daily_reward(new_data)
                 self.get_mining_proccess(new_data)
                 self.pets(new_data)
