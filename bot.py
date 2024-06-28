@@ -136,38 +136,6 @@ class PixelTapTod:
         self.log(f'{kuning}amount too small to make claim !')
         return
 
-    def daily_combo(self, data: Data):
-        url = "https://api-clicker.pixelverse.xyz/api/cypher-games/current"
-        headers = self.base_headers.copy()
-        headers['initData'] = data.init_data
-        headers['secret'] = data.secret
-        headers['tg-id'] = data.userid
-        if data.username is not None:
-            headers['username'] = data.username
-
-        res = self.http(url, headers)
-        if res.status_code != 200:
-            self.log(f'{kuning}you have complete daily combo !')
-            return
-
-        today = datetime.now(timezone.utc).isoformat().split("T")[0]
-        list_combo = open("combo.txt").read().strip().split(',')
-        list_option = res.json().get('availableOptions')
-        if list_option is None:
-            self.log(f'{merah}failed fetch combo option !')
-            return
-        list_option = [i["id"] for i in list_option]
-        combo = {list_option[int(v) - 1]: k for k, v in enumerate(list_combo)}
-        combo_id = res.json()['id']
-        answer_url = f"https://api-clicker.pixelverse.xyz/api/cypher-games/{combo_id}/answer"
-        res = requests.post(answer_url, headers=headers, json=combo)
-        if res.status_code != 201:
-            self.log(f'{merah}failed apply daily combo !')
-            return
-
-        self.log(f'{hijau}success apply daily combo !')
-        reward = res.json().get('rewardAmount', None)
-        self.log(f'{hijau}reward daily combo : {putih}{reward}')
 
     def pets(self, data: Data):
         url = "https://api-clicker.pixelverse.xyz/api/pets"
