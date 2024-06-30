@@ -1,10 +1,10 @@
 {
-    "countdown": 300,
-    "interval": 30,
-    "auto_buy_pet": true,
-    "auto_upgrade_pet": true,
+    "countdown": 30,
+    "interval": 10,
+    "auto_buy_pet": false,
+    "auto_upgrade_pet": false,
     "max_level_upgrade_pet": 5,
     "max_pet": 10,
-    "random_countdown_min": 1000,
-    "random_countdown_max": 15000
+    "random_countdown_min": 20000,
+    "random_countdown_max": 45000
 }
