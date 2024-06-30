@@ -9,6 +9,7 @@ import requests
 from colorama import *
 from datetime import datetime, timezone
 from urllib.parse import unquote, quote, parse_qs
+from random import randint
 
 init(autoreset=True)
 
@@ -240,6 +241,8 @@ class PixelTapTod:
         self.AUTO_UPGRADE_PET = config['auto_upgrade_pet']
         self.MAX_LEVEL_UPGRADE_PET = config['max_level_upgrade_pet']
         self.MAX_PET = config['max_pet']
+        self.RANDOM_COUNTDOWN_MIN = config.get('random_countdown_min', None)
+        self.RANDOM_COUNTDOWN_MAX = config.get('random_countdown_max', None)
 
     def load_data(self, file):
         if not os.path.exists(file):
@@ -253,6 +256,8 @@ class PixelTapTod:
         return datas
 
     def countdown(self, t):
+        if hasattr(self, 'RANDOM_COUNTDOWN_MIN') and hasattr(self, 'RANDOM_COUNTDOWN_MAX'):
+            t = randint(self.RANDOM_COUNTDOWN_MIN, self.RANDOM_COUNTDOWN_MAX)
         while t:
             menit, detik = divmod(t, 60)
             jam, menit = divmod(menit, 60)
