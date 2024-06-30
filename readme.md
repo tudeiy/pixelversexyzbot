@@ -29,7 +29,6 @@ Auto claim for pixeltap by pixelverse
 - [x] Auto Claim Point
 - [x] Auto Claim Daily Reward
 - [x] Suppport Multi Account
-- [x] Apply Daily Combo with User Input
 - [x] Auto Upgrade Pet
 - [x] Input data manually (no login require)
 
